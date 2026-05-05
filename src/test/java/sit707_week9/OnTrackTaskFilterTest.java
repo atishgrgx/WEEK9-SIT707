@@ -34,8 +34,7 @@ public class OnTrackTaskFilterTest {
         }
     }
     
-    //
-
+ 
     @Test
     public void testCreditGradeShowsPassAndCreditTasks() {
         // Act
