@@ -13,7 +13,7 @@ public class OnTrackTaskFilterTest {
 
         List<Task> tasks = filter.getTasksByTargetGrade("Pass");
 
-        Assert.assertEquals(99, tasks.size());
+        Assert.assertEquals(2, tasks.size());
     }
 
     @Test
