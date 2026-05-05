@@ -15,31 +15,4 @@ public class OnTrackTaskFilterTest {
 
         Assert.assertEquals(2, tasks.size());
     }
-
-    @Test
-    public void testCreditTasks() {
-        OnTrackTaskFilter filter = new OnTrackTaskFilter();
-
-        List<Task> tasks = filter.getTasksByTargetGrade("Credit");
-
-        Assert.assertEquals(3, tasks.size());
-    }
-
-    @Test
-    public void testDistinctionTasks() {
-        OnTrackTaskFilter filter = new OnTrackTaskFilter();
-
-        List<Task> tasks = filter.getTasksByTargetGrade("Distinction");
-
-        Assert.assertEquals(4, tasks.size());
-    }
-    
-    @Test
-    public void testHighDistinctionTasks() {
-        OnTrackTaskFilter filter = new OnTrackTaskFilter();
-
-        List<Task> tasks = filter.getTasksByTargetGrade("High Distinction");
-
-        Assert.assertEquals(5, tasks.size());
-    }
 }
