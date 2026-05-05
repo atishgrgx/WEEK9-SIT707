@@ -27,7 +27,7 @@ public class OnTrackTaskFilterTest {
         List<Task> tasks = filter.getTasksForTargetGrade("Pass");
 
         // Assert
-        Assert.assertEquals(99, tasks.size());
+        Assert.assertEquals(3, tasks.size());
 
         for (Task task : tasks) {
             Assert.assertEquals("Pass", task.getGradeLevel());
