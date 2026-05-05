@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Simplified OnTrack task filtering function.
  * 
- * This class filters OnTrack tasks based on the student's selected target grade.
+ * This class filters tasks based on the target grade selected by the student.
  */
 public class OnTrackTaskFilter {
 
@@ -15,7 +15,7 @@ public class OnTrackTaskFilter {
     public OnTrackTaskFilter() {
         allTasks = new ArrayList<>();
 
-        // Sample OnTrack tasks based on different grade levels.
+        // Sample OnTrack tasks for testing the filtering function.
         allTasks.add(new Task("1.1P", "Evidence week 1 learning", "Pass"));
         allTasks.add(new Task("1.2P", "Browser automation using Selenium", "Pass"));
         allTasks.add(new Task("2.1P", "Selenium test case", "Pass"));
@@ -30,57 +30,43 @@ public class OnTrackTaskFilter {
     }
 
     /**
-     * Returns tasks that are required for the selected target grade.
+     * Returns the list of tasks required for the selected target grade.
      */
     public List<Task> getTasksForTargetGrade(String targetGrade) {
-        validateTargetGrade(targetGrade);
-
-        List<Task> filteredTasks = new ArrayList<>();
-
-        for (Task task : allTasks) {
-            if (getGradeRank(task.getGradeLevel()) <= getGradeRank(targetGrade)) {
-                filteredTasks.add(task);
-            }
-        }
-
-        return filteredTasks;
-    }
-
-    /**
-     * Checks whether the selected target grade is valid.
-     */
-    private void validateTargetGrade(String targetGrade) {
         if (targetGrade == null || targetGrade.trim().isEmpty()) {
             throw new IllegalArgumentException("Target grade cannot be empty");
         }
 
-        if (getGradeRank(targetGrade) == -1) {
-            throw new IllegalArgumentException("Invalid target grade");
+        List<Task> filteredTasks = new ArrayList<>();
+
+        for (Task task : allTasks) {
+            if (shouldShowTask(targetGrade, task.getGradeLevel())) {
+                filteredTasks.add(task);
+            }
         }
+        return filteredTasks;
     }
 
     /**
-     * Gives each grade level a rank.
-     * 
-     * Lower ranked tasks are included when a higher target grade is selected.
+     * Checks whether a task should be shown for the selected target grade.
      */
-    private int getGradeRank(String gradeLevel) {
-        if (gradeLevel.equals("Pass")) {
-            return 1;
+    private boolean shouldShowTask(String targetGrade, String taskGrade) {
+        if (targetGrade.equals("Pass")) {
+            return taskGrade.equals("Pass");
         }
 
-        if (gradeLevel.equals("Credit")) {
-            return 2;
+        if (targetGrade.equals("Credit")) {
+            return taskGrade.equals("Pass") || taskGrade.equals("Credit");
         }
 
-        if (gradeLevel.equals("Distinction")) {
-            return 3;
+        if (targetGrade.equals("Distinction")) {
+            return taskGrade.equals("Pass") || taskGrade.equals("Credit") || taskGrade.equals("Distinction");
         }
 
-        if (gradeLevel.equals("High Distinction")) {
-            return 4;
+        if (targetGrade.equals("High Distinction")) {
+            return taskGrade.equals("Pass") || taskGrade.equals("Credit") || taskGrade.equals("Distinction") || taskGrade.equals("High Distinction");
         }
 
-        return -1;
+        return false;
     }
 }
