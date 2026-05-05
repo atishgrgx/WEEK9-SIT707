@@ -33,4 +33,13 @@ public class OnTrackTaskFilterTest {
 
         Assert.assertEquals(4, tasks.size());
     }
+    
+    @Test
+    public void testHighDistinctionTasks() {
+        OnTrackTaskFilter filter = new OnTrackTaskFilter();
+
+        List<Task> tasks = filter.getTasksByTargetGrade("High Distinction");
+
+        Assert.assertEquals(5, tasks.size());
+    }
 }

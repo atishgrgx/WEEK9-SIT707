@@ -25,6 +25,14 @@ public class OnTrackTaskFilter {
             tasks.add(new Task("3.2C", "Equivalence class test case", "Credit"));
             tasks.add(new Task("6.2D", "Right-BICEP and code coverage", "Distinction"));
         }
+        
+        if (targetGrade.equals("High Distinction")) {
+            tasks.add(new Task("1.1P", "Evidence week 1 learning", "Pass"));
+            tasks.add(new Task("1.2P", "Browser automation using Selenium", "Pass"));
+            tasks.add(new Task("3.2C", "Equivalence class test case", "Credit"));
+            tasks.add(new Task("6.2D", "Right-BICEP and code coverage", "Distinction"));
+            tasks.add(new Task("7.2H", "CI/CD with Google Cloud Platform", "High Distinction"));
+        }
 
         return tasks;
     }
