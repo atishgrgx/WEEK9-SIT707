@@ -5,25 +5,25 @@ package sit707_week9;
  */
 public class Task {
 
-    private String taskId;
+    private String id;
     private String title;
-    private String gradeLevel;
+    private String grade;
 
-    public Task(String taskId, String title, String gradeLevel) {
-        this.taskId = taskId;
+    public Task(String id, String title, String grade) {
+        this.id = id;
         this.title = title;
-        this.gradeLevel = gradeLevel;
+        this.grade = grade;
     }
 
-    public String getTaskId() {
-        return taskId;
+    public String getId() {
+        return id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getGradeLevel() {
-        return gradeLevel;
+    public String getGrade() {
+        return grade;
     }
 }
